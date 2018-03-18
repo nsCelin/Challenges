@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Challenge</title>
+</head>
+<body>
+<form name="Form2" action="Display.html" method="GET">
+<h2>Form 2</h2>
+<input type="checkbox" name="Age" value="false" onchange="this.value=this.checked">Age<br>
+<input type="checkbox" name="Gender" value="false" onchange="this.value=this.checked">Gender<br>
+<br>
+<input type="submit" name="Next2" id="Next2" value="Next">
+<br></br>
+<input type="hidden" name= "FirstName" id="FirstName" value="">
+<input type="hidden" name= "LastName" id="LastName" value="">
+</form>
+<script type="text/javascript">
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var queries = queryString.split("&");
+
+var fName = queries[0].split("=");
+var lName = queries[1].split("=");
+document.Form2.FirstName.value = fName[1];
+document.Form2.LastName.value = lName[1];
+</script> 
+</body>
+</html>

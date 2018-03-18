@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="display" action="" >
+<h2>User Details Entered</h2>
+<label>FirstName</label>
+<input type="text" name= "FirstName" id = "FirstName" value="" readonly>
+<br></br>
+<label>LastName</label>
+<input type="text" name= "LastName" id = "LastName" value="" readonly>
+<br></br>
+<input type="checkbox" name="Age" id = "Age" value="">Age<br>
+<input type="checkbox" name="Gender" id = "Gender" value="">Gender<br>
+</form>
+
+<script type="text/javascript">
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var queries = queryString.split("&");
+
+for (var i = 0; i < queries.length; i++)
+{    
+   //document.write(queries[i]);
+	var param = queries[i].split("=");
+	
+	if(param[0].indexOf("FirstName")==0)
+		document.display.FirstName.value = param[1];
+	
+	
+	if(param[0].indexOf("LastName")==0)
+	  document.display.LastName.value = param[1];
+	
+	if(param[0].indexOf("Age")==0 && param[1].indexOf("true")==0)
+		document.getElementById("Age").checked = true;
+			
+	if(param[0].indexOf("Gender")==0 && param[1].indexOf("true")==0)
+		document.getElementById("Gender").checked = true;
+
+}
+</script> 
+
+</body>
+</html>
