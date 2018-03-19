@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Challenge</title>
+<script>
+var nonvisibleDivId = null;
+var visibleDivId = null;
+var FirstName = null;
+var LastName = null;
+var Age = null;
+var Gender = null;
+
+function toggleVisibility(divId1, divId)
+{    
+	var divOne = document.getElementById("FirstDiv");
+    var divTwo = document.getElementById("SecondDiv");
+    FirstName = document.getElementById("FirstName");
+    LastName = document.getElementById("LastName");
+    
+    if(visibleDivId === divId1){
+    	visibleDivId = null;
+     } else {
+       visibleDivId = divId1;
+     }
+    
+    if(nonvisibleDivId === divId){
+    	nonvisibleDivId = null;
+     } else {
+    	 nonvisibleDivId = divId;
+     }
+     
+    if(visibleDivId === 'FirstDiv')
+    	divOne.style.visibility = "hidden";
+    
+    if (nonvisibleDivId  === 'SecondDiv') {
+    	divTwo.style.display = "block";
+    }
+}
+
+
+function set()
+{
+	var queryString = "?firstName=" + FirstName.value + "&lastName=" + LastName.value + "&age=" + Age + "&gender=" + Gender;
+	window.location.href = "display.html" + queryString;
+}
+
+function handleAge(cb) {	  
+	  if(cb.checked)
+      {
+		  Age = true;
+	  }
+	  else
+	  {
+		  Age = false;
+	  }
+	}
+	
+function handleGender(cbg) {	  
+	  if(cbg.checked)
+    {
+		  Gender = true;
+	  }
+	  else
+	  {
+		  Gender = false;
+	  }
+	}
+</script>
+
+</head>
+<body>
+<div id="FirstDiv">
+<label>FirstName</label>
+<input type="text" name= "FirstName" id= "FirstName" value="">
+<br></br>
+<label>LastName</label>
+<input type="text" name= "LastName" id= "LastName" value="">
+<br></br>
+<button id="button" onclick="toggleVisibility('FirstDiv','SecondDiv')">Next</button>
+</div>
+
+<div id="SecondDiv" style="display: none;">
+<input type="checkbox" name="Age" value="" onclick='handleAge(this);'>Age<br>
+<input type="checkbox" name="Gender" value="" onclick='handleGender(this);'>Gender<br>
+<br>
+<br></br>
+<button id="button" onclick="set()">Next</button>
+</div>
+</body>
+</html>
